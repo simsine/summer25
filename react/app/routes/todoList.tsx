@@ -1,6 +1,17 @@
 import type { FormEvent } from "react";
 import { useParams } from "react-router";
 import { useTodoList } from "~/queries/useTodoList";
+import styled from "styled-components";
+
+const TodoListEntryDiv = styled.div`
+	display: flex;
+	align-items: center;
+	margin-bottom: 1rem;
+`
+
+const EntryGroupDiv = styled.div`
+	margin: 0;
+`
 
 export default function TodoList() {
 	let { todoListId = "" } = useParams()
@@ -53,13 +64,13 @@ export default function TodoList() {
 			<hr />
 			<section>
 				{query.data.todos.map(todo => 
-					<div key={todo.id} className="todolistentry">
+					<TodoListEntryDiv key={todo.id}>
 						<input type="radio" checked={todo.finishedAt !== null} readOnly onClick={() => handleFinished(todo.id)} />
-						<div role="group">
+						<EntryGroupDiv role="group">
 							<input type="text" defaultValue={todo.content} autoComplete="off" readOnly/>
 							<input type="button" value="-" className="pico-background-red-450" onClick={() => handleDeleteTodo(todo.id) }/>
-						</div>
-					</div>
+						</EntryGroupDiv>
+					</TodoListEntryDiv>
 				)}
 			</section>
 			<section>
