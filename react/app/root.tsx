@@ -27,6 +27,12 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Todo App" },
+  ];
+}
+
 const queryCLient = new QueryClient()
 
 export function Layout({ children }: { children: React.ReactNode }) {

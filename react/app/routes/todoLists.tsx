@@ -1,13 +1,6 @@
 import { useRef, type FormEvent } from "react";
-import type { Route } from "./+types/todoLists";
 
 import { useTodoLists } from "~/queries/useTodoLists";
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Todo App" },
-  ];
-}
 
 export default function App() {
 	const query = useTodoLists()
